@@ -1,7 +1,6 @@
 package com.lushwe.algorithm;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -26,7 +25,7 @@ public class ThreeThreadSortPrintln {
 
     public static void main(String[] args) {
 
-        sortPrintlnOne();
+//        sortPrintlnOne();
 //        sortPrintlnTwo();
 //        sortPrintlnThree();
 //        sortPrintlnFour();
@@ -34,11 +33,27 @@ public class ThreeThreadSortPrintln {
     }
 
     /**
-     * 方法四：每个线程一个信号量，初始化都阻塞
+     * 方法四：每个线程一个信号量，开始的时候都阻塞，然后唤醒第一个，然后第一个唤醒第二个，以此类推
      */
     private static void sortPrintlnFour() {
 
-        // todo 待完成
+        // 线程数
+        int n = 3;
+        // 26个字母
+        int max = 25;
+
+        for (int i = 0; i < n; i++) {
+            conditions.add(lock.newCondition());
+        }
+
+        for (int i = 0; i < n; i++) {
+            new Thread(new PrintTaskFour(i, n, max), "Thread" + i).start();
+        }
+
+        // 唤醒第一个线程
+        lock.lock();
+        conditions.get(0).signal();
+        lock.unlock();
     }
 
 
@@ -78,6 +93,55 @@ public class ThreeThreadSortPrintln {
         }
     }
 
+    static class PrintTaskFour implements Runnable {
+
+        private int i;
+        private int n;
+        private int max;
+
+        public PrintTaskFour(int i, int n, int max) {
+            this.i = i;
+            this.n = n;
+            this.max = max;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+                lock.lock();
+                conditions.get(i).await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+
+            while (curr <= max) {
+                try {
+                    lock.lock();
+                    if (curr <= max) {
+                        System.out.println(Thread.currentThread().getName() + " 打印 " + (char) (97 + curr));
+                        curr++;
+                        if (curr <= max) {
+                            // 唤醒下一个线程
+                            conditions.get((i + 1) % n).signal();
+                            if (curr <= max - n + 1) {
+                                conditions.get(i).await();
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        }
+    }
+
     static class PrintTaskThree implements Runnable {
 
         private int i;
@@ -100,15 +164,16 @@ public class ThreeThreadSortPrintln {
                         if (curr <= max) {
                             System.out.println(Thread.currentThread().getName() + " 打印 " + (char) (97 + curr));
                             curr++;
-                            // 唤醒下一个线程
-                            conditions.get((i + 1) % n).signal();
-                        } else {
-                            break;
-                        }
-
-                        if (curr < max - n) {
-                            // 当前线程等待
-                            conditions.get(i).await();
+                            if (curr <= max) {
+                                // 唤醒下一个线程
+                                conditions.get((i + 1) % n).signal();
+                                if (curr <= max - n + 1) {
+                                    // 当前线程等待
+                                    conditions.get(i).await();
+                                } else {
+                                    break;
+                                }
+                            }
                         }
                     } else {
                         conditions.get(i).await();
@@ -150,7 +215,7 @@ public class ThreeThreadSortPrintln {
     }
 
     /**
-     * 自己想出来的方案
+     * 自己想出来的方案，利用线程挂起
      */
     private static void sortPrintlnOne() {
 
