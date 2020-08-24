@@ -12,6 +12,8 @@
         <module>algorithm-sort</module>
         <module>algorithm-leetcode</module>
         <module>algorithm-interview</module>
+        <module>algorithm-offer</module>
+        <module>algorithm-common</module>
     </modules>
 
     <properties>
