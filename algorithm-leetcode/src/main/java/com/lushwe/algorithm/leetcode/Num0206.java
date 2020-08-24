@@ -1,11 +1,13 @@
 package com.lushwe.algorithm.leetcode;
 
+import com.lushwe.common.ListNode;
+
 /**
  * 说明：反转链表
  * <p>
  * leetcode地址：https://leetcode-cn.com/problems/reverse-linked-list/
  *
- * @author Shiwei Liu
+ * @author Jack Liu
  * @date 2020-08-23 18:21
  * @since 0.1
  */
@@ -19,21 +21,11 @@ public class Num0206 {
         ListNode<Integer> node2 = new ListNode<>(2, node3);
         ListNode<Integer> node1 = new ListNode<>(1, node2);
 
-        System.out.println("=====");
-        ListNode<Integer> temp = node1;
-        while (temp != null) {
-            System.out.println(temp.value);
-            temp = temp.next;
-        }
+        System.out.println(node1);
 
         ListNode<Integer> node = reverseListNode(node1);
 
-        System.out.println("=====");
-        temp = node;
-        while (temp != null) {
-            System.out.println(temp.value);
-            temp = temp.next;
-        }
+        System.out.println(node);
     }
 
 
@@ -50,18 +42,5 @@ public class Num0206 {
         }
 
         return prev;
-    }
-
-
-    static class ListNode<T> {
-
-        T value;
-
-        ListNode<T> next;
-
-        public ListNode(T value, ListNode<T> next) {
-            this.value = value;
-            this.next = next;
-        }
     }
 }
