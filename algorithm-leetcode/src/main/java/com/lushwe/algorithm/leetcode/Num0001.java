@@ -6,7 +6,8 @@ import java.util.Map;
 /**
  * 说明：两数之和
  * <p>
- * leetcode地址：https://leetcode-cn.com/problems/two-sum/
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/add-two-numbers
  *
  * @author Jack Liu
  * @date 2020-05-17 09:36
