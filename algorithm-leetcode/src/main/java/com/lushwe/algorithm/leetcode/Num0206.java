@@ -5,7 +5,8 @@ import com.lushwe.common.ListNode;
 /**
  * 说明：反转链表
  * <p>
- * leetcode地址：https://leetcode-cn.com/problems/reverse-linked-list/
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/reverse-linked-list/
  *
  * @author Jack Liu
  * @date 2020-08-23 18:21
