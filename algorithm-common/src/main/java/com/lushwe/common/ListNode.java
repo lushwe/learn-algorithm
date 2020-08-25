@@ -22,6 +22,11 @@ public class ListNode<T> {
         this.next = next;
     }
 
+    public ListNode<T> next(ListNode<T> next) {
+        this.next = next;
+        return next;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
