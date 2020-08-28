@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 说明：给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+ * 说明：3. 无重复字符的最长子串
+ * <p>
+ * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
  *
  * @author Jack Liu
  * @date 2019-05-27 17:02
