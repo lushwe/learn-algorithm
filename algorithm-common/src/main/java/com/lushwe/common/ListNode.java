@@ -27,6 +27,14 @@ public class ListNode<T> {
         return next;
     }
 
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public void setNext(ListNode<T> next) {
+        this.next = next;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
