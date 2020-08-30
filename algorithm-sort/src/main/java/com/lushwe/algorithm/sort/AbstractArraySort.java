@@ -26,7 +26,7 @@ public abstract class AbstractArraySort implements ArraySort {
             throw new IllegalArgumentException("数组结果不合法");
         }
 
-        System.out.println("排序后：" + Arrays.toString(in));
+        System.out.println("排序后：" + Arrays.toString(out));
 
         return out;
 
