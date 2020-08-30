@@ -7,7 +7,7 @@ package com.lushwe.algorithm.sort;
  * @date 2019-05-14 15:34
  * @since 1.0
  */
-public class InsertSort extends AbstractArraySort {
+public class InsertionSort extends AbstractArraySort {
 
 
     /**
