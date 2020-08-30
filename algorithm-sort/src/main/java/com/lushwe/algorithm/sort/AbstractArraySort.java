@@ -1,5 +1,7 @@
 package com.lushwe.algorithm.sort;
 
+import java.util.Arrays;
+
 /**
  * 说明：数组排序
  *
@@ -16,26 +18,15 @@ public abstract class AbstractArraySort implements ArraySort {
             throw new IllegalArgumentException("数组参数不合法");
         }
 
-        System.out.print("排序前：");
-        for (int i = 0; i < in.length; i++) {
-            System.out.print(" ");
-            System.out.print(in[i]);
-        }
+        System.out.println("排序前：" + Arrays.toString(in));
 
         int[] out = doSort(in);
-
 
         if (out == null || out.length == 0) {
             throw new IllegalArgumentException("数组结果不合法");
         }
 
-        System.out.println();
-
-        System.out.print("排序后：");
-        for (int i = 0; i < out.length; i++) {
-            System.out.print(" ");
-            System.out.print(out[i]);
-        }
+        System.out.println("排序后：" + Arrays.toString(in));
 
         return out;
 
