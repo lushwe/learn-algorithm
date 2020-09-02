@@ -12,8 +12,12 @@ public class InsertionSort extends AbstractArraySort {
 
     /**
      * 插入排序
-     * 从第二个开始，和前面元素比较，选择插入位置
+     * <p>
+     * 从第二个开始，和前面所有元素进行比较，选择插入位置
+     * <p>
      * 时间复杂度：O(n^2)
+     * 空间复杂度：O(1)
+     *
      * @param in
      * @return
      */
