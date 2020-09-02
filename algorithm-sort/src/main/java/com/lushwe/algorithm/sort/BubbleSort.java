@@ -11,8 +11,11 @@ public class BubbleSort extends AbstractArraySort {
 
     /**
      * 冒泡排序
+     * <p>
      * 数组相邻位置的元素比较，一轮排序后，最大的元素会被放到最后一个位置，依次类推，类似冒泡一样
-     * 时间复杂度O(n^2)
+     * <p>
+     * 时间复杂度：O(n^2)
+     * 空间复杂度：O(1)
      *
      * @param in
      * @return
