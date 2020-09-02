@@ -11,8 +11,12 @@ public class QuickSort extends AbstractArraySort {
 
     /**
      * 快速排序
+     * <p>
      * 首先把数组分成两个部分，一部分比另一部分小，再使用递归，分别在两个部分使用快速排序
+     * <p>
      * 时间复杂度：O(nlogn)
+     * 空间复杂度：O(1)
+     *
      * @param in
      * @return
      */
